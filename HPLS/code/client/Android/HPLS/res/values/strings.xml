@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">HPLS</string>
+    <string name="metaioSDKSignature">t9RLagcjZwKao0qIA3iOrNPUTScEcBGtfZx9UH+yfK8=</string>
+    <string name="btnReset">Reset</string>
+    <string name="btnClose">close</string>    
+</resources>
