@@ -61,48 +61,51 @@ public final class R {
         public static final int web_stop=0x7f020021;
     }
     public static final class id {
-        public static final int actionButton=0x7f060008;
+        public static final int actionButton=0x7f06000a;
         public static final int audioButton=0x7f060002;
-        public static final int button1=0x7f060007;
-        public static final int buttonClose=0x7f06000e;
-        public static final int buttonShare=0x7f06001a;
-        public static final int buttonWebBack=0x7f06001b;
-        public static final int buttonWebForward=0x7f06001e;
-        public static final int buttonWebReload=0x7f06001d;
-        public static final int buttonWebStop=0x7f06001c;
+        public static final int button1=0x7f060009;
+        public static final int buttonClose=0x7f060010;
+        public static final int buttonShare=0x7f06001c;
+        public static final int buttonWebBack=0x7f06001d;
+        public static final int buttonWebForward=0x7f060020;
+        public static final int buttonWebReload=0x7f06001f;
+        public static final int buttonWebStop=0x7f06001e;
         public static final int callButton=0x7f060005;
+        public static final int container=0x7f060007;
         public static final int emailButton=0x7f060006;
         public static final int homePageButton=0x7f060000;
-        public static final int html5viewcontainer=0x7f06000f;
-        public static final int imageAttribution=0x7f06000a;
+        public static final int html5viewcontainer=0x7f060011;
+        public static final int imageAttribution=0x7f06000c;
         public static final int imageButton=0x7f060001;
-        public static final int imagePOIThumbnail=0x7f060009;
-        public static final int includeChannelBadge=0x7f060013;
-        public static final int layoutRotated=0x7f060011;
-        public static final int poidetailfragment=0x7f060010;
-        public static final int progress=0x7f060015;
-        public static final int progressBar=0x7f060018;
-        public static final int ratingbar=0x7f06000c;
-        public static final int root=0x7f060016;
+        public static final int imagePOIThumbnail=0x7f06000b;
+        public static final int includeChannelBadge=0x7f060015;
+        public static final int layoutRotated=0x7f060013;
+        public static final int poidetailfragment=0x7f060012;
+        public static final int progress=0x7f060017;
+        public static final int progressBar=0x7f06001a;
+        public static final int ratingbar=0x7f06000e;
+        public static final int root=0x7f060018;
         public static final int routeButton=0x7f060004;
-        public static final int textPOIDescription=0x7f060012;
-        public static final int textPOILocation=0x7f06000d;
-        public static final int textPOIName=0x7f06000b;
+        public static final int textPOIDescription=0x7f060014;
+        public static final int textPOILocation=0x7f06000f;
+        public static final int textPOIName=0x7f06000d;
+        public static final int textView1=0x7f060008;
         public static final int videoButton=0x7f060003;
-        public static final int webBottomBar=0x7f060019;
-        public static final int webView=0x7f060017;
-        public static final int webview=0x7f060014;
+        public static final int webBottomBar=0x7f06001b;
+        public static final int webView=0x7f060019;
+        public static final int webview=0x7f060016;
     }
     public static final class layout {
-        public static final int arel=0x7f030000;
-        public static final int button_action_detail=0x7f030001;
-        public static final int channel_detail_badge=0x7f030002;
-        public static final int html5container=0x7f030003;
-        public static final int poiactivity=0x7f030004;
-        public static final int poidetaildialog=0x7f030005;
-        public static final int visual_search=0x7f030006;
-        public static final int webview=0x7f030007;
-        public static final int webviewnav=0x7f030008;
+        public static final int activity_result=0x7f030000;
+        public static final int arel=0x7f030001;
+        public static final int button_action_detail=0x7f030002;
+        public static final int channel_detail_badge=0x7f030003;
+        public static final int html5container=0x7f030004;
+        public static final int poiactivity=0x7f030005;
+        public static final int poidetaildialog=0x7f030006;
+        public static final int visual_search=0x7f030007;
+        public static final int webview=0x7f030008;
+        public static final int webviewnav=0x7f030009;
     }
     public static final class raw {
         public static final int success=0x7f040000;
@@ -906,10 +909,12 @@ public final class R {
         /**  Title for warning messages 
          */
         public static final int MSG_TITLE_WARNING=0x7f0700aa;
+        public static final int action_settings=0x7f07010f;
         public static final int app_name=0x7f07010b;
         public static final int btnClose=0x7f07010d;
         public static final int btnReset=0x7f07010c;
         public static final int metaioSDKSignature=0x7f070000;
+        public static final int title_activity_result=0x7f07010e;
     }
     public static final class style {
         public static final int AppTheme=0x7f080004;
