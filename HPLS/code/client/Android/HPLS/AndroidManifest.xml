@@ -45,6 +45,11 @@
             android:theme="@style/Theme.FullScreen" >
         </activity>
         
+        <activity
+            android:name="com.hp.hpls3.ResultActivity"
+            android:label="@string/title_activity_result" >
+        </activity>
+        
     </application>
 
 </manifest>
