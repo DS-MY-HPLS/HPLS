@@ -2,5 +2,7 @@
     <string name="app_name">HPLS</string>
     <string name="metaioSDKSignature">ttnbMPciaVH8TbTxOZ+giPOUchJP+3pEarvrAZ6m5LI=</string>
     <string name="btnReset">Reset</string>
-    <string name="btnClose">close</string>    
+    <string name="btnClose">close</string>
+    <string name="title_activity_result">ResultActivity</string>
+    <string name="action_settings">Settings</string>
 </resources>
