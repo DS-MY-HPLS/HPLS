@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -40,11 +41,8 @@ public class WelcomeScreen extends Activity {
 				Log.d("onClick", "ResultPage");
 				
 				DefineData dD = new DefineData("type:laptop,model:1234");
-				Log.d("type: ", dD.getType());
-				Log.d("model: ", dD.getModel());
-				Log.d("directory: ", dD.getDirectory());
-				
 				Intent rsIntent = new Intent(WelcomeScreen.this, ResultActivity.class);
+				rsIntent.putExtra("toResult", (Parcelable)dD);
 				startActivity(rsIntent);
 				break;
 			default:
