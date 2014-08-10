@@ -26,6 +26,11 @@ public class AndroidFeatures {
 	}
 	
 	public static void showToastMethod(String message) {
+		AndroidFeatures.message = message;
+		showToastMethod();
+	}
+	
+	public static void showToastMethod() {
         Toast toast = Toast.makeText(context, message, Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.CENTER, 0, 0);
 		toast.show();

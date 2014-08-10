@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,9 +30,15 @@ public class WelcomeScreen extends Activity {
 		{
 			case R.id.btnVisualSearch:
 				adFt.showToastMethod("VisualSearch");
+				Log.d("onClick", "visualSearch");
+				Intent vsIntent = new Intent(WelcomeScreen.this, VisualSearchActivity.class);
+				startActivity(vsIntent);
 				break;
 			case R.id.btnResultPage:
 				adFt.showToastMethod("ResultPage");
+				Log.d("onClick", "ResultPage");
+				Intent rsIntent = new Intent(WelcomeScreen.this, ResultActivity.class);
+				startActivity(rsIntent);
 				break;
 			default:
 				break;
