@@ -1,6 +1,7 @@
 package com.hp.hpls3;
 
 import com.hp.hpls3.androidFeatures.AndroidFeatures;
+import com.hp.hpls3.defineData.DefineData;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -37,6 +38,12 @@ public class WelcomeScreen extends Activity {
 			case R.id.btnResultPage:
 				adFt.showToastMethod("ResultPage");
 				Log.d("onClick", "ResultPage");
+				
+				DefineData dD = new DefineData("type:laptop,model:1234");
+				Log.d("type: ", dD.getType());
+				Log.d("model: ", dD.getModel());
+				Log.d("directory: ", dD.getDirectory());
+				
 				Intent rsIntent = new Intent(WelcomeScreen.this, ResultActivity.class);
 				startActivity(rsIntent);
 				break;
