@@ -3,6 +3,10 @@ package com.hp.hpls3;
 
 import java.io.FileOutputStream;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -11,11 +15,13 @@ import android.graphics.Paint;
 import android.graphics.Paint.Align;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.hp.hpls3.defineData.DefineData;
 import com.metaio.sdk.ARViewActivity;
 import com.metaio.sdk.MetaioDebug;
 import com.metaio.sdk.jni.ETRACKING_STATE;
@@ -184,36 +190,24 @@ public class VisualSearchActivity extends ARViewActivity
 				MetaioDebug.log("Loading tracking configuration...");
 				boolean result = metaioSDK.setTrackingConfiguration(response.get(0).getTrackingConfiguration(), false);
 				MetaioDebug.log("Tracking configuration loaded: "+result);
-
-				// load an image geometry to display the result on the pattern
-				final String texturePath = AssetsManager.getAssetPath(getApplicationContext(), "VisualSearch/Assets/poi.png");
-				if (texturePath != null) 
+				
+				float acc = response.get(0).getVisualSearchScore();
+				MetaioDebug.log("metaio score: "+ acc);
+				
+				String metadata = response.get(0).getMetadata();
+				MetaioDebug.log("metaio metaData: "+metadata);
+				
+				if(metadata != null || !metadata.isEmpty())
 				{
-					// remove the file extension
-					//final String name = response.get(0).getTrackingConfigurationName().replaceFirst("[.][^.]+$", "");
-					final String name = response.get(0).getMetadata().replaceFirst("[.][^.]+$", "");
-					
-					// create a billboard texture that highlights the file name of the searched image
-					final String imagePath = createTexture(name, texturePath);
-					
-					if (imagePath != null)
-					{
-						if (mModel == null)
-						{
-							// create new geometry
-							mModel = metaioSDK.createGeometryFromImage(imagePath);
-							mModel.setScale(1.5f);
-							MetaioDebug.log("The image has been loaded successfully");
-						}
-						else
-						{
-							// update texture with new image
-							mModel.setTexture(imagePath);
-						}
-					}
-					else
-					{
-						MetaioDebug.log(Log.ERROR, "Error creating image texture");
+					MetaioDebug.log("onVisualSearchResult: getMetadata: " + metadata);
+					try {
+						DefineData resultDd = new DefineData( metadata );						
+						Intent nextScreen = new Intent(getApplicationContext(), ResultActivity.class);
+						nextScreen.putExtra("toResult", (Parcelable)resultDd);
+						startActivity(nextScreen);
+						
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
 				}
 

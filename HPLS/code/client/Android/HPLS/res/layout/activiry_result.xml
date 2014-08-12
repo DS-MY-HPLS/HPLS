@@ -66,44 +66,87 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textSize="12sp" />
 
-    <Button
-        android:id="@+id/buyBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tvDescription"
-        android:layout_below="@+id/tvDescription"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="40dp"
-        android:background="#0096d6"
-        android:minHeight="50dip"
-        android:minWidth="320dip"
-        android:onClick="gotoWeb"
-        android:text="Buy Now"
-        android:textAlignment="center"
-        android:textColor="#fff" />
-    
-   <Button
-        android:id="@+id/locationBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/ivProduct"
-        android:layout_alignRight="@+id/buyBtn"
-        android:layout_below="@+id/buyBtn"
-        android:textColor="#fff"
-        android:background="#0096d6"
-        android:layout_marginTop="20dp"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:text="Locate Nearby Stores" />
+   
 
    <ImageButton
        android:id="@+id/socialsBtn"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:layout_below="@+id/locationBtn"
+       android:layout_alignParentBottom="true"
        android:layout_centerHorizontal="true"
-       android:layout_marginTop="16dp"
        android:background="#fff"
        android:src="@drawable/socials" />
+
+   
+
+   <ScrollView
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_above="@+id/socialsBtn"
+       android:layout_alignParentLeft="true"
+       android:layout_alignParentRight="true"
+       android:layout_below="@+id/tvDescription" >
+
+	   <LinearLayout
+	       android:layout_width="wrap_content"
+	       android:layout_height="wrap_content"
+	       android:orientation="vertical" >
+	       
+	       <Button
+		       android:id="@+id/btnBuy"
+		       android:layout_width="wrap_content"
+		       android:layout_height="wrap_content"
+		       android:layout_marginTop="15dp"
+		       android:layout_gravity="center_horizontal"
+		       android:background="#0096d6"
+		       android:minHeight="50dip"
+		       android:minWidth="320dip"
+		       android:onClick="gotoWeb"
+		       android:text="Buy Now"
+		       android:textAlignment="center"
+		       android:textColor="#fff" />
+	       
+	       <Button
+	           android:id="@+id/btnLocation"
+	           android:layout_width="match_parent"
+	           android:layout_height="wrap_content"
+	           android:layout_marginTop="15dp"
+	           android:layout_gravity="center_horizontal"
+	           android:background="#0096d6"
+	           android:gravity="center"
+	           android:onClick="gotoWeb"
+	           android:text="Locate Nearby Stores"
+	           android:textColor="#fff" />
+		   
+	       <Button
+		       android:id="@+id/btnSpec"
+		       android:layout_width="wrap_content"
+		       android:layout_height="wrap_content"
+		       android:layout_marginTop="15dp"
+		       android:layout_gravity="center_horizontal"
+		       android:background="#0096d6"
+		       android:minHeight="50dip"
+		       android:minWidth="320dip"
+		       android:onClick="gotoWeb"
+		       android:text="Specification"
+		       android:textAlignment="center"
+		       android:textColor="#fff" />
+	
+		   	<Button
+		       android:id="@+id/btnVideo"
+		       android:layout_width="wrap_content"
+		       android:layout_height="wrap_content"
+		       android:layout_marginTop="15dp"
+		       android:layout_gravity="center_horizontal"
+		       android:background="#0096d6"
+		       android:minHeight="50dip"
+		       android:minWidth="320dip"
+		       android:onClick="gotoWeb"
+		       android:text="Video"
+		       android:textAlignment="center"
+		       android:textColor="#fff" />
+	
+	   </LinearLayout>
+   </ScrollView>
 
 </RelativeLayout>

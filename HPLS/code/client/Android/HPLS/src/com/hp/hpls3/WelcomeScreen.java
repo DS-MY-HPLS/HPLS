@@ -40,7 +40,20 @@ public class WelcomeScreen extends Activity {
 				adFt.showToastMethod("ResultPage");
 				Log.d("onClick", "ResultPage");
 				
-				DefineData dD = new DefineData("type:laptop,model:1234");
+				String JsonValue = "{" +
+									  "\"code\": \"F9J18UA\"," +
+									  "\"title\": \"HP Pavilion 11 x360 Convertible Laptop\"," +
+									  "\"price\": \"USD$399.00\"," +
+									  "\"description\": \"Easily convert from laptop to stand to tablet mode with this amazingly value-packed convertible PC, featuring a 360-degree hinge. With optimized touchscreen performance and BeatsAudio™, all your productivity and entertainment needs are at your fingertips.\"," +
+									  "\"url_images\": \"http://www.atechpk.com/wp-content/uploads/2014/02/hp-pavilion-x360-frontal.jpg|http://www.arabhardware.net/images/stories/news/2014/02-February/25022014-HP-360-Degree-Laptop/HP-360-Degree-Laptop-02.jpg|http://www.unveilguru.com/wp-content/uploads/2014/06/hp360.png\"," +
+									  "\"url_datasheet\": \"http://www8.hp.com/h20195/v2/GetPDF.aspx/c04172423.pdf\"," +
+									  "\"url_video\": \"\"," +
+									  "\"url_buynow\": \"http://www8.hp.com/us/en/store-finder/find.do?bs=SR2&type=reseller&sku=F9J18UA\"," +
+									  "\"url_reseller\": \"https://goo.gl/maps/CeVPj\"" +
+								  "}";
+				Log.d("JSON", JsonValue);
+				
+				DefineData dD = new DefineData(JsonValue);
 				Intent rsIntent = new Intent(WelcomeScreen.this, ResultActivity.class);
 				rsIntent.putExtra("toResult", (Parcelable)dD);
 				startActivity(rsIntent);
