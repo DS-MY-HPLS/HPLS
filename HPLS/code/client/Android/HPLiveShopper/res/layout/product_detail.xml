@@ -1,0 +1,134 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RelativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:scrollbars="vertical"
+    tools:context="com.alicia.hpliveshopper.DetailActivity" >
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="title"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/lblCode"
+        android:layout_alignBottom="@+id/lblCode"
+        android:layout_toRightOf="@+id/lblCode"
+        android:text="code" />
+
+    <TextView
+        android:id="@+id/txtPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblCode"
+        android:layout_toRightOf="@+id/lblPrice"
+        android:text="price" />
+
+    <ImageView
+        android:id="@+id/ImageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtTitle"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/lblPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/lblCode"
+        android:layout_below="@+id/txtCode"
+        android:text="@string/product_price"
+        android:textStyle="bold" />
+
+    <VideoView
+        android:id="@+id/VideoView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/btnReseller"
+        android:layout_alignLeft="@+id/lblPrice"
+        android:layout_alignRight="@+id/ImageView2"
+        android:layout_below="@+id/txtPrice" />
+
+    <TextView
+        android:id="@+id/txtDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/VideoView"
+        android:layout_alignRight="@+id/btnReseller"
+        android:layout_below="@+id/VideoView"
+        android:maxWidth="150dp"
+        android:text="description" />
+
+    <ImageView
+        android:id="@+id/ImageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/txtTitle"
+        android:layout_below="@+id/txtTitle"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/lblCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ImageView1"
+        android:layout_below="@+id/ImageView1"
+        android:text="@string/product_code"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnReseller"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnDatasheet"
+        android:layout_alignRight="@+id/btnBuynow"
+        android:layout_below="@+id/btnDatasheet"
+        android:text="@string/product_reseller" />
+
+    <Button
+        android:id="@+id/btnDatasheet"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/btnBuynow"
+        android:layout_below="@+id/btnBuynow"
+        android:layout_marginTop="15dp"
+        android:text="@string/product_datasheet" />
+
+    <Button
+        android:id="@+id/btnBuynow"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/txtPrice"
+        android:layout_alignBottom="@+id/txtPrice"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/VideoView"
+        android:text="@string/product_buynow" />
+
+    <ImageView
+        android:id="@+id/ImageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/btnBuynow"
+        android:layout_alignTop="@+id/ImageView2"
+        android:src="@drawable/ic_launcher" />
+
+</RelativeLayout>
