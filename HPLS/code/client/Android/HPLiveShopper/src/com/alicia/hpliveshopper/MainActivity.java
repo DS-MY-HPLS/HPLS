@@ -5,11 +5,13 @@ import org.json.JSONObject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.alicia.defineData.DefineData;
 import com.metaio.sdk.ARViewActivity;
 import com.metaio.sdk.MetaioDebug;
 import com.metaio.sdk.jni.ETRACKING_STATE;
@@ -140,31 +142,13 @@ public class MainActivity extends ARViewActivity {
 				
 				if (metadata != null) {
 					try {
-						JSONObject json = new JSONObject(metadata);
-						String code = json.getString("code");
-						String title = json.getString("title");
-						String price = json.getString("price");
-						String description = json.getString("description");
-						String url_datasheet = json.getString("url_datasheet");
-						String url_video = json.getString("url_video");
-						String url_buynow = json.getString("url_buynow");
-						String url_reseller = json.getString("url_reseller");
-						String url_images = json.getString("url_images");
 						
-						Intent nextScreen = new Intent(getApplicationContext(), DetailActivity.class);
-						nextScreen.putExtra("code", code);
-						nextScreen.putExtra("title", title);
-						nextScreen.putExtra("price", price);
-						nextScreen.putExtra("description", description);
-						nextScreen.putExtra("url_datasheet", url_datasheet);
-						nextScreen.putExtra("url_video", url_video);
-						nextScreen.putExtra("url_buynow", url_buynow);
-						nextScreen.putExtra("url_reseller", url_reseller);
-						nextScreen.putExtra("url_images", url_images);
+						DefineData toNextScreenDd = new DefineData(metadata);						
+						Intent nextScreen = new Intent(getApplicationContext(), ResultActivity.class);
+						nextScreen.putExtra("toNextScreenDd", (Parcelable)toNextScreenDd);
 						startActivity(nextScreen);
 						
-						
-					} catch (JSONException e) {
+					} catch (Exception e) {
 						e.printStackTrace();
 					}
 				} else {

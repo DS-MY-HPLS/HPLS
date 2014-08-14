@@ -19,6 +19,8 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import com.alicia.defineData.DefineData;
+
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -54,6 +56,8 @@ public class DetailActivity extends Activity {
 	String videoUrl;
 	private Button btnBuynow;
 	private Button btnReseller;
+	
+	DefineData resultDd;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -74,17 +78,19 @@ public class DetailActivity extends Activity {
 
 		videoView = (VideoView) findViewById(R.id.VideoView);
 
-		Intent i = getIntent();
+//		Intent i = getIntent();
 		// Receiving the Data
-		String code = i.getStringExtra("code");
-		String title = i.getStringExtra("title");
-		String price = i.getStringExtra("price");
-		String description = i.getStringExtra("description");
-		String url_images = i.getStringExtra("url_images");
-		final String url_datasheet = i.getStringExtra("url_datasheet");
-		final String url_video = i.getStringExtra("url_video");
-		final String url_buynow = i.getStringExtra("url_buynow");
-		final String url_reseller = i.getStringExtra("url_reseller");
+		Intent rsIntent = this.getIntent();
+		resultDd = (DefineData)rsIntent.getParcelableExtra("toNextScreenDd");
+		String code = resultDd.getCode();
+		String title = resultDd.getTitle();
+		String price = resultDd.getPrice();
+		String description = resultDd.getDescription();
+		String url_images = resultDd.getUrl_images();
+		final String url_datasheet = resultDd.getUrl_datasheet();
+		final String url_video = resultDd.getUrl_video();
+		final String url_buynow = resultDd.getUrl_buynow();
+		final String url_reseller = resultDd.getUrl_reseller();
 
 		// Displaying Received data
 		txtCode.setText(code);
