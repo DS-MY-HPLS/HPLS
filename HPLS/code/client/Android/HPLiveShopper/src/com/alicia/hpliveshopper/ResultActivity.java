@@ -18,14 +18,17 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.os.Build;
@@ -58,9 +61,16 @@ public class ResultActivity extends Activity {
 	{
 		try
 		{
-			ImageView ivProduct = (ImageView)findViewById(R.id.ivProduct);
+			DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+			int width = displayMetrics.widthPixels / 2;
+			int height = displayMetrics.heightPixels;
 			
-			Log.d("image", resultDd.getUrl_images());
+			LinearLayout lLRelatedPicture = (LinearLayout)findViewById(R.id.lLRelatedPic);
+			lLRelatedPicture.getLayoutParams().height = width;
+			
+			Log.d("width", "width " + width);
+			
+			Log.d("image", "url_images " + resultDd.getUrl_images());
 			
 			if(resultDd.getUrl_images() != null || "".equalsIgnoreCase(resultDd.getUrl_images()))
 			{
@@ -71,22 +81,26 @@ public class ResultActivity extends Activity {
 					Log.d("i = ", "i = " + i);
 					if(i == 0)
 					{
-						BitmapWorkerTask task1 = new BitmapWorkerTask(ivProduct);
+						ImageView ivProduct = (ImageView)findViewById(R.id.ivProduct);
+						ivProduct.getLayoutParams().width = width;
+						ivProduct.getLayoutParams().height = width;
+						ImageView ivProductFront = (ImageView)findViewById(R.id.ivProductFront);
+						ivProductFront.getLayoutParams().width = width - 10;
+						ivProductFront.getLayoutParams().height = width - 10;
+						BitmapWorkerTask task1 = new BitmapWorkerTask(ivProductFront);
 						task1.execute(images[0]);
 					}
 					
 					else
 					{
-//						ImageView iv = new ImageView(this);
-//						BitmapWorkerTask task2 = new BitmapWorkerTask(iv);
-//						task2.execute(images[i]);
-						
+						ImageView iv = new ImageView(this);
+//						iv.getLayoutParams().width = width;
+//						iv.getLayoutParams().height = width;
+						lLRelatedPicture.addView(iv);
+						BitmapWorkerTask task2 = new BitmapWorkerTask(iv);
+						task2.execute(images[i]);
 					}
 				}
-//				ivProduct.getLayoutParams().width = 300;
-//				ivProduct.getLayoutParams().height = 300;
-//				BitmapWorkerTask task1 = new BitmapWorkerTask(ivProduct);
-//				task1.execute(images[0]);
 			}
 			
 			TextView tvProdName = (TextView)findViewById(R.id.tvProdName);
@@ -97,6 +111,29 @@ public class ResultActivity extends Activity {
 			
 			TextView tvPrice = (TextView)findViewById(R.id.tvPrice);
 			tvPrice.setText(resultDd.getPrice());
+			
+			ScrollView scVertical = (ScrollView)findViewById(R.id.scVertical);
+			final ScrollView scHorizontal = (ScrollView)findViewById(R.id.scHorizontal);
+			
+			scVertical.setOnTouchListener(new View.OnTouchListener() {
+				
+				@Override
+				public boolean onTouch(View v, MotionEvent event) {
+					// TODO Auto-generated method stub
+					scHorizontal.getParent().requestDisallowInterceptTouchEvent(false);
+					return false;
+				}
+			});
+			
+			scHorizontal.setOnTouchListener(new View.OnTouchListener() {
+				
+				@Override
+				public boolean onTouch(View v, MotionEvent event) {
+					// TODO Auto-generated method stub
+					v.getParent().requestDisallowInterceptTouchEvent(true);
+					return false;
+				}
+			});
 		}
 		catch(Exception ex){
 			ex.printStackTrace();
@@ -139,8 +176,8 @@ public class ResultActivity extends Activity {
 		}
 		finally
 		{
-			Log.d("urlLink", urlLink);
-			if(urlLink != null || !urlLink.isEmpty())
+			Log.d("urlLink", "urlLink " + urlLink);
+			if(urlLink != null && !urlLink.isEmpty())
 			{
 				Uri uri = Uri.parse( urlLink );
 				Intent intent = new Intent(Intent.ACTION_VIEW, uri);
@@ -190,8 +227,7 @@ public class ResultActivity extends Activity {
 				final ImageView imageView = imageViewReference.get();
 				if (imageView != null) {
 					imageView.setImageBitmap(bitmap);
-//					LinearLayout lLRelatedPicture = (LinearLayout)findViewById(R.id.lLRelatedPic);
-//					lLRelatedPicture.addView(imageView);
+
 				}
 			}
 		}

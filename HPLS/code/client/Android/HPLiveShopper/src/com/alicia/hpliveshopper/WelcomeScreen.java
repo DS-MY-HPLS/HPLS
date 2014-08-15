@@ -8,6 +8,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Parcelable;
 import android.util.Log;
 import android.view.Menu;
@@ -24,6 +25,22 @@ public class WelcomeScreen extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.welcome_screen);
 		adFt = new AndroidFeatures(getApplicationContext());
+		new Handler().postDelayed(new Runnable() {
+       	 
+            /*
+             * Showing splash screen with a timer. This will be useful when you
+             * want to show case your app logo / company
+             */
+ 
+            @Override
+            public void run() {
+                Intent i = new Intent(WelcomeScreen.this, MainActivity.class);
+                startActivity(i);
+ 
+                // close this activity
+                finish();
+            }
+        }, 3000);
 //		setContentView();
 	}
 	
