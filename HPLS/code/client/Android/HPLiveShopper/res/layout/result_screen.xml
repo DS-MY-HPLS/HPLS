@@ -1,0 +1,204 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <ImageButton
+        android:id="@+id/socialsBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="#fff"
+        android:src="@drawable/socials" />
+
+    <ScrollView
+        android:id="@+id/scVertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/socialsBtn"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/ivProduct"
+         >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+        	android:paddingRight="15dp"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Story about this product.."
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#0495d5" />
+
+            <TextView
+                android:id="@+id/tvDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Free up desk space with this elegant, slim design. Whether for entertainment or everyday computing, take your overall experience above and beyond with a powerful processor, rich graphics and Full HD1 display."
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textSize="10dp" />
+            
+            <LinearLayout 
+                android:layout_width="match_parent"
+            	android:layout_height="wrap_content"
+            	android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+                
+                <RelativeLayout 
+                    android:layout_width="match_parent"
+            		android:layout_height="wrap_content">
+                
+	                <Button
+	                    android:id="@+id/btnLocation"
+	                    android:layout_width="120dp"
+	                    android:layout_height="match_parent"
+	                    android:layout_alignTop="@+id/btnSpec"
+	                    android:layout_gravity="center_horizontal"
+	                    android:background="#0096d6"
+	                    android:gravity="center"
+	                    android:onClick="gotoWeb"
+	                    android:text="Locate Nearby Stores"
+	                    android:textColor="#fff"
+	                    android:textSize="15dp" />
+
+		            <Button
+		                android:id="@+id/btnSpec"
+		                android:layout_width="120dp"
+		                android:layout_height="match_parent"
+		                android:layout_alignParentBottom="true"
+		                android:layout_alignParentRight="true"
+		                android:background="#0096d6"
+		                android:minHeight="50dip"
+		                android:minWidth="320dip"
+		                android:onClick="gotoWeb"
+		                android:text="Specification"
+		                android:textAlignment="center"
+		                android:textSize="15dp"
+		                android:textColor="#fff" />
+	            
+	            </RelativeLayout>                
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnVideo"
+                android:layout_width="132dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:background="#0096d6"
+                android:minHeight="50dip"
+                android:minWidth="320dip"
+                android:onClick="gotoWeb"
+                android:text="Video"
+                android:textAlignment="center"
+                android:textColor="#fff" />
+            
+            <ScrollView
+                android:id="@+id/scHorizontal"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp">
+                <LinearLayout 
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content"
+                	android:layout_width="match_parent"
+                	android:id="@+id/lLRelatedPic">
+                 
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/tvProdName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="5dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="HP Pavilion 23-h060xt TouchSmart All-in-One Desktop PC"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ImageView
+        android:id="@+id/ivProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tvProdName"
+        android:layout_marginLeft="15dp"
+        android:background="#0096d6"
+        android:padding="5dp"
+        android:paddingTop="10dp"
+        android:src="@drawable/product250x250" />
+
+    <TextView
+        android:id="@+id/tvPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvPriceLable"
+        android:layout_below="@+id/tvPriceLable"
+        android:layout_marginTop="5dp"
+        android:text="$989.99"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#d7410b" />
+
+    <TextView
+        android:id="@+id/tvPriceLable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/ivProduct"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="62dp"
+        android:layout_toRightOf="@+id/ivProduct"
+        android:text="Our Price:"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/btnBuy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ivProduct"
+        android:layout_alignLeft="@+id/tvPrice"
+        android:background="#0096d6"
+        android:minHeight="50dip"
+        android:minWidth="320dip"
+        android:layout_marginRight="15dp"
+        android:onClick="gotoWeb"
+        android:text="Buy Now"
+        android:textAlignment="center"
+        android:textColor="#fff" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvPriceLable"
+        android:layout_below="@+id/tvProdName"
+        android:layout_marginTop="10dp"
+        android:text="Code:"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/tvCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvPriceLable"
+        android:layout_below="@+id/TextView01"
+        android:layout_marginTop="5dp"
+        android:textSize="16dp"
+        android:text="FG1237JDF"
+        android:textColor="#0096d6" />
+
+</RelativeLayout>
