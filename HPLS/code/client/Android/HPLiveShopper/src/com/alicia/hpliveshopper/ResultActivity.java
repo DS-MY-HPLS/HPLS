@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -26,8 +27,10 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -61,14 +64,26 @@ public class ResultActivity extends Activity {
 	{
 		try
 		{
+			ImageButton ibVideo = (ImageButton)findViewById(R.id.ibVideo);
+			if(resultDd.getUrl_video().isEmpty()){
+				ibVideo.setVisibility(View.INVISIBLE);
+			}
+			
 			DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
 			int width = displayMetrics.widthPixels / 2;
 			int height = displayMetrics.heightPixels;
+			
+			RelativeLayout rlLocation = (RelativeLayout)findViewById(R.id.rlLocation);
+			rlLocation.getLayoutParams().width = width - 20;
+			
+			RelativeLayout rlSpec = (RelativeLayout)findViewById(R.id.rlSpec);
+			rlSpec.getLayoutParams().width = width - 20;
 			
 			LinearLayout lLRelatedPicture = (LinearLayout)findViewById(R.id.lLRelatedPic);
 			lLRelatedPicture.getLayoutParams().height = width;
 			
 			Log.d("width", "width " + width);
+			Log.d("height", "height " + height);
 			
 			Log.d("image", "url_images " + resultDd.getUrl_images());
 			
@@ -81,13 +96,21 @@ public class ResultActivity extends Activity {
 					Log.d("i = ", "i = " + i);
 					if(i == 0)
 					{
-						ImageView ivProduct = (ImageView)findViewById(R.id.ivProduct);
-						ivProduct.getLayoutParams().width = width;
-						ivProduct.getLayoutParams().height = width;
-						ImageView ivProductFront = (ImageView)findViewById(R.id.ivProductFront);
-						ivProductFront.getLayoutParams().width = width - 10;
-						ivProductFront.getLayoutParams().height = width - 10;
-						BitmapWorkerTask task1 = new BitmapWorkerTask(ivProductFront);
+						ImageView ivBlueBackground = (ImageView)findViewById(R.id.ivBlueBackground);
+						ivBlueBackground.getLayoutParams().width = width;
+						ivBlueBackground.getLayoutParams().height = width;
+						
+						ImageView ivWhiteBackground = (ImageView)findViewById(R.id.ivWhiteBackground);
+						int whiteWidth = width - 20;
+						ivWhiteBackground.getLayoutParams().width = whiteWidth;
+						ivWhiteBackground.getLayoutParams().height = whiteWidth;
+						
+						ImageView ivImageProduct = (ImageView)findViewById(R.id.ivImageProduct);
+						int productWidth = whiteWidth - 20;
+						ivImageProduct.setBackgroundColor(Color.WHITE);
+						ivImageProduct.getLayoutParams().width = productWidth;
+						ivImageProduct.getLayoutParams().height = productWidth;
+						BitmapWorkerTask task1 = new BitmapWorkerTask(ivImageProduct);
 						task1.execute(images[0]);
 					}
 					
@@ -152,15 +175,23 @@ public class ResultActivity extends Activity {
 				urlLink = resultDd.getUrl_buynow();
 				break;
 				
-			case R.id.btnLocation:
+			case R.id.ibLocation:
 				urlLink = resultDd.getUrl_reseller();
 				break;
 				
-			case R.id.btnSpec:
+			case R.id.ibSpec:
 				urlLink = resultDd.getUrl_datasheet();
 				break;
 				
 			case R.id.btnVideo:
+				urlLink = resultDd.getUrl_video();
+				break;
+				
+			case R.id.ibVideo:
+				urlLink = resultDd.getUrl_video();
+				break;
+				
+			case R.id.ivImageProduct:
 				urlLink = resultDd.getUrl_video();
 				break;
 
