@@ -49,8 +49,10 @@ public class MainActivity extends ARViewActivity{
 	
 	private HorizontalScrollView hsvPic;
 	private LinearLayout llPic;
-	private Animation righttoleft;
-    private Animation lefttoright;
+	private Animation righttoleftinvisible;
+	private Animation righttoleftvisible;
+    private Animation lefttorightvisible;
+    private Animation lefttorightinvisible;
 
 	private final static String databaseID = "hpls";
 
@@ -90,16 +92,7 @@ public class MainActivity extends ARViewActivity{
 				            Drawable d = Drawable.createFromStream(ims, fileName);
 				 
 				            ImageView iv = new ImageView(MainActivity.this);
-//				            iv.getLayoutParams().height = 170;
-//				            iv.getLayoutParams().width = 170;
 				            iv.setImageDrawable(d);
-//				            android.view.ViewGroup.LayoutParams layoutParams = iv.getLayoutParams();
-//				            layoutParams.width = 30;
-//				            layoutParams.height = 30;
-//				            iv.setLayoutParams(layoutParams);
-//				            iv.requestLayout();
-//				            iv.getLayoutParams().height = 20;
-//				            iv.getLayoutParams().width = 20;
 				            iv.setOnClickListener(new OnClickListener() {
 								
 								@Override
@@ -119,7 +112,7 @@ public class MainActivity extends ARViewActivity{
 					}
 					
 					
-					AndroidFeatures.showToastMethod("file finish "  + files.length);
+//					AndroidFeatures.showToastMethod("file finish "  + files.length);
 					Log.d(INPUT_SERVICE, files.toString());
 				}
 				catch(Exception ex)
@@ -129,10 +122,33 @@ public class MainActivity extends ARViewActivity{
 			}
 		});
 		
-		righttoleft = AnimationUtils.loadAnimation( MainActivity.this, R.anim.righttoleftinvisible );
-		lefttoright = AnimationUtils.loadAnimation( MainActivity.this, R.anim.lefttorightvisible );
+		righttoleftinvisible = AnimationUtils.loadAnimation( MainActivity.this, R.anim.righttoleftinvisible );
+		righttoleftvisible = AnimationUtils.loadAnimation( MainActivity.this, R.anim.righttoleftvisible );
+		lefttorightvisible = AnimationUtils.loadAnimation( MainActivity.this, R.anim.lefttorightvisible );
+		lefttorightinvisible = AnimationUtils.loadAnimation( MainActivity.this, R.anim.lefttorightinvisible );
 		
-		righttoleft.setAnimationListener(new AnimationListener() {
+		righttoleftvisible.setAnimationListener(new AnimationListener() {
+			
+			@Override
+			public void onAnimationStart(Animation animation) {
+				// TODO Auto-generated method stub
+				llPicVisible();
+			}
+			
+			@Override
+			public void onAnimationRepeat(Animation animation) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onAnimationEnd(Animation animation) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		righttoleftinvisible.setAnimationListener(new AnimationListener() {
 			
 			@Override
 			public void onAnimationStart(Animation animation) {
@@ -152,7 +168,7 @@ public class MainActivity extends ARViewActivity{
 			}
 		});
 		
-		lefttoright.setAnimationListener(new AnimationListener() {
+		lefttorightvisible.setAnimationListener(new AnimationListener() {
 			
 			@Override
 			public void onAnimationStart(Animation animation) {
@@ -169,6 +185,27 @@ public class MainActivity extends ARViewActivity{
 			public void onAnimationRepeat(Animation animation) {
 				// TODO Auto-generated method stub
 				
+			}
+		});
+		
+		lefttorightinvisible.setAnimationListener(new AnimationListener() {
+			
+			@Override
+			public void onAnimationStart(Animation animation) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onAnimationRepeat(Animation animation) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onAnimationEnd(Animation animation) {
+				// TODO Auto-generated method stub
+				llPicVisible();
 			}
 		});
 
@@ -204,33 +241,35 @@ public class MainActivity extends ARViewActivity{
 				float dx = event.getX() - fingerX;
 				if(dx < 0)	//swipe left
 				{
-					AndroidFeatures.showToastMethod("Left fingerY " + fingerX);
 					MetaioDebug.log("LEFT fingerY: " + fingerX);
-					
-					
 					
 					new Handler().post(new Runnable() {
 						
 						@Override
 						public void run() {
 							if(hsvPic.getVisibility() == View.INVISIBLE)
-								hsvPic.startAnimation(lefttoright);
+								hsvPic.startAnimation(lefttorightvisible);
+							else
+								hsvPic.startAnimation(lefttorightinvisible);
 						}
 					});
 				}
 				else
 				{
-					AndroidFeatures.showToastMethod("RIGHT fingerY " + fingerX);
 					MetaioDebug.log("RIGHT fingerY: " + fingerX);
-					
-					
 					
 					new Handler().post(new Runnable() {
 						
 						@Override
 						public void run() {
 							if(hsvPic.getVisibility() == View.VISIBLE)
-								hsvPic.startAnimation(righttoleft);
+							{
+								hsvPic.startAnimation(righttoleftinvisible);
+							}
+							else
+							{
+								hsvPic.startAnimation(righttoleftvisible);
+							}
 							
 						}
 					});
@@ -334,7 +373,7 @@ public class MainActivity extends ARViewActivity{
 			
 			if (errorCode == 0 && response.size() > 0) {
 				
-				float visualScore = response.get(0).getVisualSearchScore();
+				final float visualScore = response.get(0).getVisualSearchScore();
 				MetaioDebug.log("VisualSearchScore: " + visualScore);
 				
 				String metadata = response.get(0).getMetadata();

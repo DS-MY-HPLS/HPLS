@@ -27,6 +27,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -136,7 +137,7 @@ public class ResultActivity extends Activity {
 			tvPrice.setText(resultDd.getPrice());
 			
 			ScrollView scVertical = (ScrollView)findViewById(R.id.scVertical);
-			final ScrollView scHorizontal = (ScrollView)findViewById(R.id.scHorizontal);
+			final HorizontalScrollView scHorizontal = (HorizontalScrollView)findViewById(R.id.scHorizontal);
 			
 			scVertical.setOnTouchListener(new View.OnTouchListener() {
 				
