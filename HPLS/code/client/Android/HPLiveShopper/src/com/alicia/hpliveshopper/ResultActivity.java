@@ -6,36 +6,29 @@ import java.lang.ref.WeakReference;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import com.alicia.defineData.DefineData;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
-import android.widget.Switch;
 import android.widget.TextView;
-import android.os.Build;
+
+import com.alicia.defineData.DefineData;
 
 public class ResultActivity extends Activity {
 	
@@ -131,7 +124,7 @@ public class ResultActivity extends Activity {
 			tvProdName.setText(resultDd.getTitle());
 			
 			TextView tvDescription = (TextView)findViewById(R.id.tvDescription);
-			tvDescription.setText(resultDd.getDescription());
+			tvDescription.setText(Html.fromHtml(resultDd.getDescription()));
 			
 			TextView tvPrice = (TextView)findViewById(R.id.tvPrice);
 			tvPrice.setText(resultDd.getPrice());
