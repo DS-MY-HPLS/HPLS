@@ -2,10 +2,14 @@
 <resources>
 
     <string name="app_name">HP LiveShopper</string>
-    <string name="metaioSDKSignature">Zz58R2F/1+pwNVZxWoF5tv/MkSVolIKFCVi3IZMERx8=</string>
+    <string name="metaioSDKSignature">L1lKbcIeVQd1fcuFfWP7W6kIFIDFW2RkKs6eXYGLRlU=</string>
+    <string name="title_activity_detail">Product Detail</string>    
     <string name="product_code">Code:</string>
+    <string name="product_title">Title:</string>
 	<string name="product_price">Price:</string>
-	<string name="url_accessories">http://m.store.hp.com/webapp/wcs/stores/servlet/m20/us/en/cat/accessories-88342--1</string>
-	<string name="url_email">https://h41268.www4.hp.com/live/index.aspx?qid=8237</string>
-	<string name="call_number">1800-88-4848</string>
+	<string name="product_description">Description:</string>
+	<string name="product_datasheet">Datasheet PDF</string>
+	<string name="product_video">View Video</string>
+	<string name="product_buynow">Buy Now</string>
+	<string name="product_reseller">Find Reseller</string>	
 </resources>

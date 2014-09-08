@@ -1,31 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hp.liveshopper"
+    package="com.alicia.hpliveshopper"
     android:versionCode="1"
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="16"
+        android:minSdkVersion="10"
         android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SET_DEBUG_APP" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-
-    <uses-feature android:name="android.hardware.camera" />
-    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.hp.liveshopper.MainActivity"
+            android:name=".WelcomeScreen"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait"
+             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,22 +30,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.hp.liveshopper.ProductActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:parentActivityName="com.hp.liveshopper.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.actionbar.MainActivity" />
+            android:name=".MainActivity"
+            android:label="Scan Object"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.hp.liveshopper.AdvertActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="landscape"
-            android:parentActivityName="com.hp.liveshopper.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.actionbar.MainActivity" />
+            android:name=".DetailActivity"
+            android:label="@string/title_activity_detail" >
+        </activity>
+        <activity
+            android:name=".ResultActivity"
+            android:label="@string/title_activity_detail"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 
